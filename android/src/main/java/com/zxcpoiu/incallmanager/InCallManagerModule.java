@@ -84,7 +84,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
     private boolean isOrigAudioSetupStored = false;
     private boolean origIsSpeakerPhoneOn = false;
     private boolean origIsMicrophoneMute = false;
-    private int origAudioMode = AudioManager.MODE_INVALID;
+    private int origAudioMode = AudioManager.MODE_NORMAL;
     private boolean defaultSpeakerOn = false;
     private int defaultAudioMode = AudioManager.MODE_NORMAL;
     private int forceSpeakerOn = 0;
@@ -543,7 +543,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
     public void start(final String _media, final boolean auto, final String ringbackUriType) {
         media = _media;
         if (media.equals("video")) {
-            defaultSpeakerOn = false;
+            defaultSpeakerOn = true;
         } else {
             defaultSpeakerOn = false;
         }
@@ -1173,11 +1173,11 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
             public void onPrepared(MediaPlayer mp) {
                 Log.d(TAG, String.format("MediaPlayer %s onPrepared(), start play, isSpeakerPhoneOn %b", name, audioManager.isSpeakerphoneOn()));
                 if (name.equals("mBusytone")) {
-                    audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                    audioManager.setMode(AudioManager.MODE_NORMAL);
                 } else if (name.equals("mRingback")) {
-                    audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                    audioManager.setMode(AudioManager.MODE_NORMAL);
                 } else if (name.equals("mRingtone")) {
-                    audioManager.setMode(AudioManager.MODE_RINGTONE);
+                    audioManager.setMode(AudioManager.MODE_NORMAL);
                 } 
                 updateAudioRoute();
                 mp.start();
@@ -1445,11 +1445,11 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
 
                         // --- make sure audio routing, or it will be wired when switch suddenly
                         if (caller.equals("mBusytone")) {
-                            audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                            audioManager.setMode(AudioManager.MODE_NORMAL);
                         } else if (caller.equals("mRingback")) {
-                            audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                            audioManager.setMode(AudioManager.MODE_NORMAL);
                         } else if (caller.equals("mRingtone")) {
-                            audioManager.setMode(AudioManager.MODE_RINGTONE);
+                            audioManager.setMode(AudioManager.MODE_NORMAL);
                         } 
                         InCallManagerModule.this.updateAudioRoute();
 
