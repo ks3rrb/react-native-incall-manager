@@ -63,6 +63,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import com.zxcpoiu.incallmanager.InCallManagerModule.AudioDevice;
 import com.zxcpoiu.incallmanager.AppRTC.AppRTCBluetoothManager;
 
 public class InCallManagerModule extends ReactContextBaseJavaModule implements LifecycleEventListener, AudioManager.OnAudioFocusChangeListener {
@@ -85,7 +86,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
     private boolean origIsMicrophoneMute = false;
     private int origAudioMode = AudioManager.MODE_INVALID;
     private boolean defaultSpeakerOn = false;
-    private int defaultAudioMode = AudioManager.MODE_IN_COMMUNICATION;
+    private int defaultAudioMode = AudioManager.MODE_NORMAL;
     private int forceSpeakerOn = 0;
     private boolean automatic = true;
     private boolean isProximityRegistered = false;
