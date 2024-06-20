@@ -543,7 +543,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
     public void start(final String _media, final boolean auto, final String ringbackUriType) {
         media = _media;
         if (media.equals("video")) {
-            defaultSpeakerOn = true;
+            defaultSpeakerOn = false;
         } else {
             defaultSpeakerOn = false;
         }
